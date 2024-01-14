@@ -71,7 +71,7 @@ migrate() {
 }
 
 check_postgres_connection() {
-	su postgres -c "$PGBIN/psql $DATABASE_URL -c 'select 1;'"
+	PGPASSWORD=$OPENPROJECT_DB_PASSWORD su postgres -c "$PGBIN/psql $DATABASE_URL -c 'select 1;'"
 }
 
 wait_for_postgres() {
